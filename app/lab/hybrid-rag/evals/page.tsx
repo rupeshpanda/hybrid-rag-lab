@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import EvalsView from "../../../../components/hybrid-rag/EvalsView";
+import { EVAL_SCENARIOS } from "../../../../lib/hybrid-rag/evals";
 
 export const metadata: Metadata = {
   title: "Evals — Enterprise Hybrid RAG — Elegance AI",
@@ -8,5 +9,6 @@ export const metadata: Metadata = {
 };
 
 export default function EvalsPage() {
-  return <EvalsView />;
+  const scenarios = EVAL_SCENARIOS.map((s) => ({ id: s.id, title: s.title, question: s.question }));
+  return <EvalsView scenarios={scenarios} />;
 }

@@ -195,6 +195,15 @@ export type TraceStep = {
   detail: string;
 };
 
+export type RoutingDecision = {
+  mechanism: string;
+  /** True if this mechanism ran for this question. */
+  invoked: boolean;
+  /** True if this mechanism runs unconditionally on every question (not a routed decision). */
+  always: boolean;
+  reason: string;
+};
+
 export type GraphPathNode = {
   id: string;
   label: string;
@@ -229,9 +238,23 @@ export type EvidenceBundle = {
   decision: Decision | null;
   trace: TraceStep[];
   citations: Citation[];
+  routing: RoutingDecision[];
 };
 
 export type AgentResponse = {
   answer: string;
   evidence: EvidenceBundle;
+};
+
+// ── Vector-only comparison mode ────────────────────────────────────────
+
+export type VectorOnlyResult = {
+  answer: string;
+  chunks: PolicyChunk[];
+  missingCallouts: string[];
+};
+
+export type CompareResult = {
+  hybrid: AgentResponse;
+  vectorOnly: VectorOnlyResult;
 };

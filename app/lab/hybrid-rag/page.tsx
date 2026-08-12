@@ -4,7 +4,7 @@ import HybridRagLab from "../../../components/hybrid-rag/HybridRagLab";
 export const metadata: Metadata = {
   title: "Enterprise Hybrid RAG — Elegance AI",
   description:
-    "See how an AI customer-service agent combines enterprise data, Vector RAG, ontology and Graph RAG to resolve complex distributor returns for a fictional battery company.",
+    "See how an AI customer-service agent combines enterprise data, Vector RAG, a lightweight knowledge graph, and deterministic rules to resolve complex distributor returns for a fictional battery company.",
   openGraph: {
     title: "Enterprise Hybrid RAG",
     description:

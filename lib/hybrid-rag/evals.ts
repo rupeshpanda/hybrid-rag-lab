@@ -143,6 +143,51 @@ export const EVAL_SCENARIOS: EvalScenario[] = [
       return { pass, detail: pass ? "Retrieved the Standard Company Return Policy." : "Did not retrieve the standard return policy." };
     },
   },
+  {
+    id: "eval-11",
+    title: "Article headline question",
+    question: "Can Dallas Power Distributors return 25 batteries from invoice INV-10042, what is the refund amount, and who needs to approve it?",
+    expectedRetrieval: { structured: true, vector: true, graph: true },
+    expectedPolicies: ["Gold Distributor Return Policy", "Manager Approval Policy"],
+    expect: (e) => {
+      const refund = e.decision?.refund_amount;
+      const approvalRequired = e.decision?.approval_required;
+      const invoked = (m: string) => e.routing.find((r) => r.mechanism === m)?.invoked === true;
+      const allPathsFired = invoked("Structured retrieval") && invoked("Knowledge graph") && invoked("Vector RAG");
+      const pass = refund === 12000 && approvalRequired === true && allPathsFired;
+      return {
+        pass,
+        detail: `Expected $12,000 refund requiring manager approval, with structured, graph, and vector all invoked. Got refund=$${refund}, approval_required=${approvalRequired}, all paths fired=${allPathsFired}.`,
+      };
+    },
+  },
+  {
+    id: "eval-12",
+    title: "Simple policy question genuinely skips structured and graph",
+    question: "What does our return policy say about damaged batteries?",
+    expectedRetrieval: { structured: false, vector: true, graph: false },
+    expectedPolicies: ["Defective Product Policy"],
+    expect: (e) => {
+      const invoked = (m: string) => e.routing.find((r) => r.mechanism === m)?.invoked;
+      const pass = invoked("Structured retrieval") === false && invoked("Knowledge graph") === false && invoked("Vector RAG") === true;
+      return {
+        pass,
+        detail: `Expected structured and graph skipped, vector invoked. Got structured=${invoked("Structured retrieval")}, graph=${invoked("Knowledge graph")}, vector=${invoked("Vector RAG")}.`,
+      };
+    },
+  },
+  {
+    id: "eval-13",
+    title: "Payment status is retrieved from structured data",
+    question: "Has invoice INV-10042 been paid?",
+    expectedRetrieval: { structured: true, vector: false, graph: false },
+    expectedPolicies: [],
+    expect: (e) => {
+      const status = e.transactions.invoice?.payment_status;
+      const pass = status === "paid";
+      return { pass, detail: `Expected payment_status "paid" on INV-10042 from structured data. Got "${status}".` };
+    },
+  },
 ];
 
 export type EvalRunResult = {

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { SAP_MAPPING } from "../../lib/hybrid-rag/sap-mapping";
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
@@ -13,34 +14,46 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 const RAG_PATTERNS = [
   {
     name: "Vector RAG",
-    used: "Used here for policy documents",
-    body: "Embeddings and semantic similarity. A question about a return policy retrieves the passages of policy text closest in meaning, even if the exact words differ.",
+    used: true,
+    usedFor: "policy document retrieval, via a TF-IDF similarity index",
+    body: "Rank passages by similarity to the question rather than exact keyword match. A question about a return policy retrieves the passages of policy text closest in meaning, even if the exact words differ.",
   },
   {
     name: "Metadata-Filtered RAG",
-    used: "Used here to narrow by tier, region, and policy type",
+    used: true,
+    usedFor: "narrowing candidate chunks by tier, region, and policy type before ranking",
     body: "Semantic retrieval filtered first by structured metadata: distributor tier, region, or policy type, so the search only ranks the chunks that could actually apply.",
   },
   {
     name: "Hybrid Search RAG",
-    used: "Combines meaning with exact terms",
-    body: "Semantic retrieval plus traditional keyword matching, useful when exact terms (a SKU, a policy name) matter as much as meaning.",
+    used: false,
+    body: "Semantic retrieval plus a separate traditional keyword index, useful when exact terms (a SKU, a policy name) need to match as much as meaning does. This lab's single TF-IDF index already blends term overlap into its similarity score, but there is no separate keyword-index layer alongside it.",
   },
   {
     name: "Structured RAG",
-    used: "Used here for invoices, orders, and returns",
+    used: true,
+    usedFor: "invoices, sales orders, returns, and credit memos, looked up by ID",
     body: "Retrieve exact information from structured sources, like an invoice amount, a quantity, or a date, by lookup, not by similarity.",
   },
   {
     name: "Graph RAG",
-    used: "Used here to find which policy applies",
+    used: true,
+    usedFor: "resolving which policy applies to a distributor's tier and contract, or a product's warranty",
     body: "Retrieve knowledge through relationships between entities: a distributor connects to a contract, which connects to a policy.",
   },
   {
     name: "Agentic RAG",
-    used: "What this lab demonstrates",
+    used: true,
+    usedFor: "the router choosing which retrieval mechanisms a given question actually needs",
     body: "The LLM chooses and combines multiple retrieval mechanisms depending on the question, rather than always running the same fixed retrieval step.",
   },
+];
+
+const BROKEN_WITHOUT = [
+  { layer: "Structured retrieval", breaks: "The model invents invoice amounts, dates, and quantities instead of looking them up." },
+  { layer: "Knowledge graph", breaks: "The wrong tier's policy gets applied. Similarity picks a plausible-sounding policy, not the contracted one." },
+  { layer: "Rules engine", breaks: "The model can approve a return that fails the eligibility rules, or state a refund amount it never actually calculated." },
+  { layer: "Vector RAG", breaks: "The model paraphrases policy from training-data memory instead of citing the actual, current policy text." },
 ];
 
 const ONTOLOGY_EDGES = [
@@ -115,7 +128,7 @@ export default function HowItWorks() {
       <hr style={{ border: "none", borderTop: "1px solid var(--border)" }} />
 
       {/* Six RAG patterns */}
-      <section style={{ maxWidth: 1000, margin: "0 auto", padding: "48px 24px" }}>
+      <section id="retrieval-patterns" style={{ maxWidth: 1000, margin: "0 auto", padding: "48px 24px" }}>
         <SectionLabel>3. Six retrieval patterns, one agent</SectionLabel>
         <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "1.35rem", color: "var(--navy)", marginBottom: 20 }}>
           Different knowledge should be retrieved differently
@@ -124,7 +137,9 @@ export default function HowItWorks() {
           {RAG_PATTERNS.map((p) => (
             <div key={p.name} style={{ border: "1px solid var(--border)", borderRadius: 12, padding: 20, background: "var(--card)" }}>
               <div style={{ fontSize: "1rem", fontWeight: 700, color: "var(--navy)", marginBottom: 6 }}>{p.name}</div>
-              <div style={{ fontSize: "0.72rem", fontWeight: 600, color: "var(--accent)", marginBottom: 10 }}>{p.used}</div>
+              <div style={{ fontSize: "0.72rem", fontWeight: 600, color: p.used ? "var(--accent)" : "var(--muted)", marginBottom: 10 }}>
+                {p.used ? `Used in this lab: ${p.usedFor}` : "Not used in this lab"}
+              </div>
               <p style={{ fontSize: "0.85rem", color: "var(--muted)", lineHeight: 1.65, margin: 0 }}>{p.body}</p>
             </div>
           ))}
@@ -133,8 +148,33 @@ export default function HowItWorks() {
 
       <hr style={{ border: "none", borderTop: "1px solid var(--border)" }} />
 
+      {/* What breaks without each layer */}
+      <section style={{ maxWidth: 900, margin: "0 auto", padding: "48px 24px" }}>
+        <SectionLabel>What breaks without each layer</SectionLabel>
+        <div style={{ overflowX: "auto" }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.88rem", minWidth: 480 }}>
+            <thead>
+              <tr style={{ borderBottom: "2px solid var(--border)" }}>
+                <th style={{ textAlign: "left", padding: "10px 12px", color: "var(--muted)", fontWeight: 600 }}>Remove this</th>
+                <th style={{ textAlign: "left", padding: "10px 12px", color: "var(--muted)", fontWeight: 600 }}>What goes wrong</th>
+              </tr>
+            </thead>
+            <tbody>
+              {BROKEN_WITHOUT.map((row) => (
+                <tr key={row.layer} style={{ borderBottom: "1px solid var(--border)" }}>
+                  <td style={{ padding: "10px 12px", fontWeight: 600, color: "var(--navy)", whiteSpace: "nowrap" }}>{row.layer}</td>
+                  <td style={{ padding: "10px 12px", color: "var(--ink)" }}>{row.breaks}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <hr style={{ border: "none", borderTop: "1px solid var(--border)" }} />
+
       {/* Ontology */}
-      <section style={{ maxWidth: 860, margin: "0 auto", padding: "48px 24px" }}>
+      <section id="ontology" style={{ maxWidth: 860, margin: "0 auto", padding: "48px 24px" }}>
         <SectionLabel>4. What is an ontology?</SectionLabel>
         <p style={{ fontSize: "0.95rem", color: "var(--muted)", lineHeight: 1.75, marginBottom: 20 }}>
           An ontology defines the important things in a business and how those things relate to one
@@ -182,7 +222,7 @@ export default function HowItWorks() {
       <hr style={{ border: "none", borderTop: "1px solid var(--border)" }} />
 
       {/* SAP connection */}
-      <section style={{ maxWidth: 900, margin: "0 auto", padding: "48px 24px" }}>
+      <section id="sap-mapping" style={{ maxWidth: 900, margin: "0 auto", padding: "48px 24px" }}>
         <SectionLabel>6. Where this connects to SAP</SectionLabel>
         <p style={{ fontSize: "0.95rem", color: "var(--muted)", lineHeight: 1.75, marginBottom: 24 }}>
           This lab intentionally simplifies a real enterprise architecture. In production, the equivalent
@@ -208,18 +248,9 @@ export default function HowItWorks() {
           <div style={{ border: "1px solid var(--gold)", borderRadius: 10, padding: "10px 18px", fontSize: "0.9rem", fontWeight: 600, color: "var(--gold)" }}>Customer Answer</div>
         </div>
         <div style={{ marginTop: 24, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: 8 }}>
-          {[
-            ["Product", "Material Master"],
-            ["Distributor", "Customer Master"],
-            ["Sales Order", "SAP Sales Order"],
-            ["Invoice", "Billing Document"],
-            ["Return", "Return Order"],
-            ["Credit Memo", "Credit Memo"],
-            ["Supplier", "Vendor / Business Partner"],
-            ["Purchase Order", "SAP PO"],
-          ].map(([a, b]) => (
-            <div key={a} style={{ fontSize: "0.78rem", color: "var(--muted)", border: "1px solid var(--border)", borderRadius: 8, padding: "6px 10px" }}>
-              <span style={{ color: "var(--ink)", fontWeight: 600 }}>{a}</span> → {b}
+          {SAP_MAPPING.map((m) => (
+            <div key={m.entity} style={{ fontSize: "0.78rem", color: "var(--muted)", border: "1px solid var(--border)", borderRadius: 8, padding: "6px 10px" }}>
+              <span style={{ color: "var(--ink)", fontWeight: 600 }}>{m.entity}</span> → {m.sapEquivalent}
             </div>
           ))}
         </div>

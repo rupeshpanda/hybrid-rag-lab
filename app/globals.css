@@ -136,3 +136,20 @@ textarea:focus-visible {
     grid-template-columns: 1fr;
   }
 }
+
+/* Hybrid RAG Lab — hybrid vs vector-only comparison, side by side on desktop */
+.hybrid-rag-compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+@media (max-width: 640px) {
+  .hybrid-rag-compare-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Hybrid RAG Lab — suggestion chip row scrolls horizontally, never wraps */
+.hybrid-rag-chip-row {
+  scrollbar-width: thin;
+}

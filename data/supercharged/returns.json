@@ -174,5 +174,17 @@
     "request_date": "2026-08-01",
     "recorded_status": "settled",
     "credit_memo_id": "CM-2005"
+  },
+  {
+    "id": "R-1015",
+    "distributor_id": "D-004",
+    "invoice_id": "INV-10042",
+    "product_id": "AGM-100",
+    "quantity_returned": 25,
+    "units": [{ "condition": "unopened", "quantity": 25 }],
+    "reason": "Distributor requesting a large unopened return, verifying eligibility and refund",
+    "request_date": "2026-08-03",
+    "recorded_status": "pending_review",
+    "credit_memo_id": null
   }
 ]
