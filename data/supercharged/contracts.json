@@ -1,0 +1,74 @@
+[
+  {
+    "id": "C-001",
+    "distributor_id": "D-001",
+    "start_date": "2019-03-01",
+    "policy_id": "P-04",
+    "return_window_override_days": 45,
+    "approval_threshold_override_usd": null,
+    "notes": "Negotiated a 45-day unopened return window, overriding the 30-day Standard-tier default. All other Standard-tier terms apply."
+  },
+  {
+    "id": "C-002",
+    "distributor_id": "D-002",
+    "start_date": "2018-11-14",
+    "policy_id": "P-03",
+    "return_window_override_days": null,
+    "approval_threshold_override_usd": null,
+    "notes": "Standard Silver-tier terms."
+  },
+  {
+    "id": "C-003",
+    "distributor_id": "D-003",
+    "start_date": "2020-06-22",
+    "policy_id": "P-03",
+    "return_window_override_days": null,
+    "approval_threshold_override_usd": null,
+    "notes": "Standard Silver-tier terms."
+  },
+  {
+    "id": "C-004",
+    "distributor_id": "D-004",
+    "start_date": "2015-01-09",
+    "policy_id": "P-02",
+    "return_window_override_days": null,
+    "approval_threshold_override_usd": null,
+    "notes": "Standard Gold-tier terms. Longest-tenured distributor, Texas region."
+  },
+  {
+    "id": "C-005",
+    "distributor_id": "D-005",
+    "start_date": "2021-09-30",
+    "policy_id": "P-04",
+    "return_window_override_days": null,
+    "approval_threshold_override_usd": null,
+    "notes": "Standard-tier terms."
+  },
+  {
+    "id": "C-006",
+    "distributor_id": "D-006",
+    "start_date": "2019-07-17",
+    "policy_id": "P-03",
+    "return_window_override_days": null,
+    "approval_threshold_override_usd": null,
+    "notes": "Standard Silver-tier terms."
+  },
+  {
+    "id": "C-007",
+    "distributor_id": "D-007",
+    "start_date": "2016-04-05",
+    "policy_id": "P-02",
+    "return_window_override_days": null,
+    "approval_threshold_override_usd": null,
+    "notes": "Standard Gold-tier terms."
+  },
+  {
+    "id": "C-008",
+    "distributor_id": "D-008",
+    "start_date": "2022-02-11",
+    "policy_id": "P-04",
+    "return_window_override_days": null,
+    "approval_threshold_override_usd": null,
+    "notes": "Standard-tier terms."
+  }
+]

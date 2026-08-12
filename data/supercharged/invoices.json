@@ -1,0 +1,17 @@
+[
+  { "id": "INV-1030", "sales_order_id": "SO-1020", "distributor_id": "D-001", "product_id": "STD-200", "quantity": 20, "unit_price": 210, "amount": 4200, "invoice_date": "2026-06-22", "payment_status": "paid" },
+  { "id": "INV-1031", "sales_order_id": "SO-1021", "distributor_id": "D-002", "product_id": "STD-205", "quantity": 8, "unit_price": 225, "amount": 1800, "invoice_date": "2026-07-22", "payment_status": "paid" },
+  { "id": "INV-1033", "sales_order_id": "SO-1022", "distributor_id": "D-003", "product_id": "MAR-400", "quantity": 10, "unit_price": 295, "amount": 2950, "invoice_date": "2026-06-03", "payment_status": "paid" },
+  { "id": "INV-1035", "sales_order_id": "SO-1023", "distributor_id": "D-004", "product_id": "STD-200", "quantity": 25, "unit_price": 210, "amount": 5250, "invoice_date": "2026-04-03", "payment_status": "paid" },
+  { "id": "INV-1037", "sales_order_id": "SO-1024", "distributor_id": "D-005", "product_id": "AGM-100", "quantity": 6, "unit_price": 480, "amount": 2880, "invoice_date": "2026-06-01", "payment_status": "paid" },
+  { "id": "INV-1039", "sales_order_id": "SO-1025", "distributor_id": "D-006", "product_id": "HD-300", "quantity": 10, "unit_price": 340, "amount": 3400, "invoice_date": "2026-05-07", "payment_status": "paid" },
+  { "id": "INV-1041", "sales_order_id": "SO-1026", "distributor_id": "D-007", "product_id": "EV-500", "quantity": 8, "unit_price": 420, "amount": 3360, "invoice_date": "2026-06-17", "payment_status": "paid" },
+  { "id": "INV-1043", "sales_order_id": "SO-1027", "distributor_id": "D-008", "product_id": "HD-300", "quantity": 5, "unit_price": 340, "amount": 1700, "invoice_date": "2025-06-03", "payment_status": "paid" },
+  { "id": "INV-1045", "sales_order_id": "SO-1028", "distributor_id": "D-004", "product_id": "AGM-100", "quantity": 4, "unit_price": 480, "amount": 1920, "invoice_date": "2025-06-07", "payment_status": "paid" },
+  { "id": "INV-1046", "sales_order_id": "SO-1029", "distributor_id": "D-005", "product_id": "MAR-405", "quantity": 6, "unit_price": 310, "amount": 1860, "invoice_date": "2026-06-12", "payment_status": "paid" },
+  { "id": "INV-1048", "sales_order_id": "SO-1030", "distributor_id": "D-004", "product_id": "AGM-100", "quantity": 12, "unit_price": 480, "amount": 5760, "invoice_date": "2026-05-20", "payment_status": "paid" },
+  { "id": "INV-1050", "sales_order_id": "SO-1031", "distributor_id": "D-004", "product_id": "EV-500", "quantity": 5, "unit_price": 420, "amount": 2100, "invoice_date": "2026-07-03", "payment_status": "paid" },
+  { "id": "INV-1092", "sales_order_id": "SO-1032", "distributor_id": "D-006", "product_id": "HD-300", "quantity": 10, "unit_price": 340, "amount": 3400, "invoice_date": "2026-06-22", "payment_status": "paid" },
+  { "id": "INV-1095", "sales_order_id": "SO-1033", "distributor_id": "D-007", "product_id": "AGM-105", "quantity": 10, "unit_price": 510, "amount": 5100, "invoice_date": "2026-07-17", "payment_status": "paid" },
+  { "id": "INV-1098", "sales_order_id": "SO-1034", "distributor_id": "D-008", "product_id": "STD-200", "quantity": 10, "unit_price": 210, "amount": 2100, "invoice_date": "2026-07-30", "payment_status": "paid" }
+]

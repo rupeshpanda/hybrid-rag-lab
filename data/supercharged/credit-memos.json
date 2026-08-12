@@ -1,0 +1,7 @@
+[
+  { "id": "CM-2001", "return_id": "R-1002", "invoice_id": "INV-1037", "distributor_id": "D-005", "amount": 2880, "issued_date": "2026-06-15" },
+  { "id": "CM-2002", "return_id": "R-1011", "invoice_id": "INV-1030", "distributor_id": "D-001", "amount": 420, "issued_date": "2026-07-05" },
+  { "id": "CM-2003", "return_id": "R-1012", "invoice_id": "INV-1033", "distributor_id": "D-003", "amount": 266, "issued_date": "2026-06-24" },
+  { "id": "CM-2004", "return_id": "R-1013", "invoice_id": "INV-1039", "distributor_id": "D-006", "amount": 612, "issued_date": "2026-05-29" },
+  { "id": "CM-2005", "return_id": "R-1014", "invoice_id": "INV-1098", "distributor_id": "D-008", "amount": 179, "issued_date": "2026-08-02" }
+]

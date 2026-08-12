@@ -1,0 +1,66 @@
+[
+  {
+    "id": "D-001",
+    "name": "Lone Star Auto Supply",
+    "tier": "standard",
+    "region": "Texas",
+    "since": "2019-03-01",
+    "primary_contact": "J. Alvarez, Purchasing Manager"
+  },
+  {
+    "id": "D-002",
+    "name": "Metro Auto Supply",
+    "tier": "silver",
+    "region": "Midwest",
+    "since": "2018-11-14",
+    "primary_contact": "R. Chen, Operations Director"
+  },
+  {
+    "id": "D-003",
+    "name": "Midwest Battery Partners",
+    "tier": "silver",
+    "region": "Midwest",
+    "since": "2020-06-22",
+    "primary_contact": "T. Novak, Category Manager"
+  },
+  {
+    "id": "D-004",
+    "name": "Dallas Power Distributors",
+    "tier": "gold",
+    "region": "Texas",
+    "since": "2015-01-09",
+    "primary_contact": "M. Reyes, VP Purchasing"
+  },
+  {
+    "id": "D-005",
+    "name": "Gulf Coast Automotive",
+    "tier": "standard",
+    "region": "Gulf Coast",
+    "since": "2021-09-30",
+    "primary_contact": "A. Dubois, Buyer"
+  },
+  {
+    "id": "D-006",
+    "name": "Rocky Mountain Battery",
+    "tier": "silver",
+    "region": "Mountain",
+    "since": "2019-07-17",
+    "primary_contact": "K. Sorensen, Purchasing Lead"
+  },
+  {
+    "id": "D-007",
+    "name": "Pacific Power Distribution",
+    "tier": "gold",
+    "region": "Pacific",
+    "since": "2016-04-05",
+    "primary_contact": "L. Nakamura, VP Supply Chain"
+  },
+  {
+    "id": "D-008",
+    "name": "Southeast Auto Parts",
+    "tier": "standard",
+    "region": "Southeast",
+    "since": "2022-02-11",
+    "primary_contact": "D. Whitfield, Buyer"
+  }
+]

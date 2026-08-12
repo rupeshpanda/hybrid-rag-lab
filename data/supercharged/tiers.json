@@ -1,0 +1,29 @@
+[
+  {
+    "id": "gold",
+    "name": "Gold",
+    "return_window_days": 90,
+    "restocking_fee_pct": 0,
+    "approval_threshold_usd": 5000,
+    "default_policy_id": "P-02",
+    "notes": "Highest-volume distributors. Extended unopened-return window, no restocking fee, higher auto-approval limit."
+  },
+  {
+    "id": "silver",
+    "name": "Silver",
+    "return_window_days": 60,
+    "restocking_fee_pct": 10,
+    "approval_threshold_usd": 2000,
+    "default_policy_id": "P-03",
+    "notes": "Mid-tier distributors. Standard restocking fee applies to unopened returns."
+  },
+  {
+    "id": "standard",
+    "name": "Standard",
+    "return_window_days": 30,
+    "restocking_fee_pct": 15,
+    "approval_threshold_usd": 1000,
+    "default_policy_id": "P-04",
+    "notes": "Entry-tier distributors. Shortest return window and highest restocking fee."
+  }
+]

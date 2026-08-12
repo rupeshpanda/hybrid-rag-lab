@@ -1,0 +1,6 @@
+[
+  { "id": "SUP-01", "name": "Titan Lead Components", "supplies": "Lead plates and grids", "region": "Texas" },
+  { "id": "SUP-02", "name": "Coastal Plastics & Casings", "supplies": "Battery cases and lids", "region": "Gulf Coast" },
+  { "id": "SUP-03", "name": "Apex Separator Materials", "supplies": "AGM and fiberglass separators", "region": "Midwest" },
+  { "id": "SUP-04", "name": "Precision Terminal Works", "supplies": "Terminals and connectors", "region": "Pacific" }
+]

@@ -1,0 +1,12 @@
+[
+  { "id": "P-01", "title": "Standard Company Return Policy", "doc_slug": "standard-return-policy", "policy_type": "return", "tier": "all", "region": "all" },
+  { "id": "P-02", "title": "Gold Distributor Return Policy", "doc_slug": "gold-distributor-return-policy", "policy_type": "return", "tier": "gold", "region": "all" },
+  { "id": "P-03", "title": "Silver Distributor Return Policy", "doc_slug": "silver-distributor-return-policy", "policy_type": "return", "tier": "silver", "region": "all" },
+  { "id": "P-04", "title": "Standard-Tier Distributor Return Policy", "doc_slug": "standard-distributor-return-policy", "policy_type": "return", "tier": "standard", "region": "all" },
+  { "id": "P-05", "title": "AGM Battery Warranty Policy", "doc_slug": "agm-warranty-policy", "policy_type": "warranty", "tier": "all", "region": "all" },
+  { "id": "P-06", "title": "Defective Product Policy", "doc_slug": "defective-product-policy", "policy_type": "warranty", "tier": "all", "region": "all" },
+  { "id": "P-07", "title": "Finance Refund Policy", "doc_slug": "finance-refund-policy", "policy_type": "refund", "tier": "all", "region": "all" },
+  { "id": "P-08", "title": "Manager Approval Policy", "doc_slug": "manager-approval-policy", "policy_type": "approval", "tier": "all", "region": "all" },
+  { "id": "P-09", "title": "Texas Distributor Policy", "doc_slug": "texas-distributor-policy", "policy_type": "regional", "tier": "all", "region": "Texas" },
+  { "id": "P-10", "title": "Credit Memo Policy", "doc_slug": "credit-memo-policy", "policy_type": "finance", "tier": "all", "region": "all" }
+]

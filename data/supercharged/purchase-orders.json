@@ -1,0 +1,8 @@
+[
+  { "id": "PO-3001", "supplier_id": "SUP-01", "item": "Lead plates and grids", "quantity": 5000, "order_date": "2026-07-01", "status": "confirmed" },
+  { "id": "PO-3002", "supplier_id": "SUP-02", "item": "Battery cases", "quantity": 8000, "order_date": "2026-07-05", "status": "in_transit" },
+  { "id": "PO-3003", "supplier_id": "SUP-03", "item": "AGM separators", "quantity": 6000, "order_date": "2026-06-20", "status": "received" },
+  { "id": "PO-3004", "supplier_id": "SUP-04", "item": "Terminals and connectors", "quantity": 10000, "order_date": "2026-07-10", "status": "confirmed" },
+  { "id": "PO-3005", "supplier_id": "SUP-01", "item": "Lead grids (heavy duty)", "quantity": 4000, "order_date": "2026-06-15", "status": "received" },
+  { "id": "PO-3006", "supplier_id": "SUP-02", "item": "Marine casings", "quantity": 2000, "order_date": "2026-07-20", "status": "pending" }
+]

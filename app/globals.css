@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+:root {
+  /* Elegance AI palette, ported from elegance-ai/app/globals.css so this
+     lab reads as one system with eleganceai.ai even though it deploys and
+     runs as a separate app. */
+  --bg: #FAFAF8;
+  --navy: #0C1A2E;
+  --indigo: #4338CA;
+  --indigo-dark: #3730A3;
+  --ink: #111111;
+  --border: #E8E8E4;
+  --muted: #6B7280;
+  --card: #FFFFFF;
+
+  --accent: #0D7377;
+  --accent-hover: #0A5C60;
+  --accent-light: #E8F5F5;
+  --bg-secondary: #F0F0EC;
+
+  --gold: #C8922A;
+
+  --success: #15803D;
+  --success-bg: #DCFCE7;
+  --warning: #92400E;
+  --warning-bg: #FEF9C3;
+  --danger: #B91C1C;
+  --danger-bg: #FEE2E2;
+
+  --space-section: 80px;
+  --space-section-sm: 32px;
+  --space-inner: 40px;
+  --space-card-gap: 20px;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-navy: var(--navy);
+  --color-indigo: var(--indigo);
+  --color-indigo-dark: var(--indigo-dark);
+  --color-ink: var(--ink);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-light: var(--accent-light);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-gold: var(--gold);
+  --color-success: var(--success);
+  --color-success-bg: var(--success-bg);
+  --color-warning: var(--warning);
+  --color-warning-bg: var(--warning-bg);
+  --color-danger: var(--danger);
+  --color-danger-bg: var(--danger-bg);
+  --font-serif: var(--font-dm-serif);
+  --font-sans: var(--font-inter);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.section-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.tag-badge {
+  display: inline-block;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: 99px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #1D9E75;
+  display: inline-block;
+  margin-right: 6px;
+  position: relative;
+  flex-shrink: 0;
+}
+.live-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #1D9E75;
+  animation: livePulse 2s ease-out infinite;
+}
+@keyframes livePulse {
+  0%   { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(3); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .live-dot::after { animation: none; }
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Hybrid RAG Lab — 60/40 chat / evidence grid */
+.hybrid-rag-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 20px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .hybrid-rag-grid {
+    grid-template-columns: 1fr;
+  }
+}

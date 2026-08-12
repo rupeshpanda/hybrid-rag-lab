@@ -1,0 +1,12 @@
+[
+  { "id": "AGM-100", "name": "Supercharged AGM Premium Battery", "category": "AGM", "unit_price": 480, "warranty_months": 24, "status": "active" },
+  { "id": "AGM-105", "name": "Supercharged AGM Premium Battery (Group 65)", "category": "AGM", "unit_price": 510, "warranty_months": 24, "status": "active" },
+  { "id": "STD-200", "name": "Supercharged Standard Battery", "category": "Standard", "unit_price": 210, "warranty_months": 12, "status": "active" },
+  { "id": "STD-205", "name": "Supercharged Standard Battery (Group 24)", "category": "Standard", "unit_price": 225, "warranty_months": 12, "status": "active" },
+  { "id": "HD-300", "name": "Supercharged Heavy Duty Battery", "category": "Heavy Duty", "unit_price": 340, "warranty_months": 18, "status": "active" },
+  { "id": "HD-305", "name": "Supercharged Heavy Duty Battery (Commercial)", "category": "Heavy Duty", "unit_price": 365, "warranty_months": 18, "status": "active" },
+  { "id": "MAR-400", "name": "Supercharged Marine Battery", "category": "Marine", "unit_price": 295, "warranty_months": 12, "status": "active" },
+  { "id": "MAR-405", "name": "Supercharged Marine Dual-Purpose Battery", "category": "Marine", "unit_price": 310, "warranty_months": 12, "status": "active" },
+  { "id": "EV-500", "name": "Supercharged Auxiliary EV Battery", "category": "EV Auxiliary", "unit_price": 420, "warranty_months": 36, "status": "active" },
+  { "id": "EV-505", "name": "Supercharged Auxiliary EV Battery (Compact)", "category": "EV Auxiliary", "unit_price": 395, "warranty_months": 36, "status": "active" }
+]
