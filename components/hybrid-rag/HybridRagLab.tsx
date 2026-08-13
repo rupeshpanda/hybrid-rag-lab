@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { sapEquivalentFor } from "../../lib/hybrid-rag/sap-mapping";
+import { FormattedText } from "./FormattedText";
 
 // ─────────────────────────────────────────────────────────────────────────
 // Types (mirrors lib/hybrid-rag/types.ts — kept local so the client bundle
@@ -356,7 +357,7 @@ export default function HybridRagLab() {
   return (
     <main style={{ background: "var(--bg)", color: "var(--ink)", minHeight: "100vh", paddingBottom: 60 }}>
       {/* Breadcrumb */}
-      <div style={{ borderBottom: "1px solid var(--border)", padding: "12px 24px", fontSize: "0.82rem", color: "var(--muted)", display: "flex", gap: 8, alignItems: "center" }}>
+      <div style={{ borderBottom: "1px solid var(--border)", padding: "12px 24px", fontSize: "0.82rem", color: "var(--muted)", display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap", rowGap: 4 }}>
         <a href="https://eleganceai.ai" style={{ color: "var(--muted)", textDecoration: "none" }}>Home</a>
         <span>/</span>
         <a href="https://eleganceai.ai/lab" style={{ color: "var(--muted)", textDecoration: "none" }}>Lab</a>
@@ -427,7 +428,7 @@ export default function HybridRagLab() {
                     style={{
                       fontSize: "0.68rem",
                       fontWeight: 700,
-                      padding: "4px 10px",
+                      padding: "7px 12px",
                       borderRadius: 18,
                       border: "none",
                       background: (mode === "Compare") === compareMode ? "var(--accent)" : "transparent",
@@ -459,7 +460,9 @@ export default function HybridRagLab() {
 
                   {t.status === "done" && t.result && (
                     <>
-                      <div style={{ fontSize: "0.88rem", color: "var(--ink)", lineHeight: 1.65, whiteSpace: "pre-wrap" }}>{t.result.answer}</div>
+                      <div style={{ fontSize: "0.88rem", color: "var(--ink)", lineHeight: 1.65 }}>
+                        <FormattedText text={t.result.answer} />
+                      </div>
                       {t.result.evidence.citations.length > 0 && (
                         <div style={{ fontSize: "0.75rem", color: "var(--muted)" }}>
                           Sources: {t.result.evidence.citations.slice(0, 6).map((c) => c.label).join(" · ")}
@@ -519,7 +522,7 @@ export default function HybridRagLab() {
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask about a return, refund, invoice, or policy…"
                   disabled={sending}
-                  style={{ flex: 1, border: "1px solid var(--border)", borderRadius: 8, padding: "8px 12px", fontSize: "0.88rem", background: "var(--bg)", color: "var(--ink)" }}
+                  style={{ flex: 1, minWidth: 0, border: "1px solid var(--border)", borderRadius: 8, padding: "8px 12px", fontSize: "0.88rem", background: "var(--bg)", color: "var(--ink)" }}
                 />
                 <button
                   type="submit"
@@ -559,7 +562,7 @@ export default function HybridRagLab() {
                     style={{
                       fontSize: "0.68rem",
                       fontWeight: 700,
-                      padding: "4px 10px",
+                      padding: "7px 12px",
                       borderRadius: 18,
                       border: "none",
                       background: rightPanelView === view ? "var(--accent)" : "transparent",
@@ -580,15 +583,16 @@ export default function HybridRagLab() {
               <EvidenceEmptyState />
             ) : (
               <>
-                <div style={{ display: "flex", flexWrap: "wrap", borderBottom: "1px solid var(--border)" }}>
+                <div className="hybrid-rag-chip-row" style={{ display: "flex", flexWrap: "nowrap", overflowX: "auto", borderBottom: "1px solid var(--border)" }}>
                   {EVIDENCE_TABS.map((tab) => (
                     <button
                       key={tab}
                       onClick={() => setActiveTab(tab)}
                       style={{
-                        flex: "1 1 auto",
-                        padding: "10px 6px",
-                        fontSize: "0.72rem",
+                        flex: "0 0 auto",
+                        whiteSpace: "nowrap",
+                        padding: "10px 12px",
+                        fontSize: "0.76rem",
                         fontWeight: 600,
                         border: "none",
                         borderBottom: activeTab === tab ? "2px solid var(--accent)" : "2px solid transparent",
@@ -689,7 +693,9 @@ function ComparisonBlock({ compare }: { compare: CompareResult }) {
         <div style={{ fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 8 }}>
           Hybrid pipeline
         </div>
-        <div style={{ fontSize: "0.85rem", color: "var(--ink)", lineHeight: 1.6, whiteSpace: "pre-wrap" }}>{compare.hybrid.answer}</div>
+        <div style={{ fontSize: "0.85rem", color: "var(--ink)", lineHeight: 1.6 }}>
+          <FormattedText text={compare.hybrid.answer} />
+        </div>
         {compare.hybrid.evidence.citations.length > 0 && (
           <div style={{ fontSize: "0.72rem", color: "var(--muted)", marginTop: 8 }}>
             Sources: {compare.hybrid.evidence.citations.slice(0, 5).map((c) => c.label).join(" · ")}
@@ -700,7 +706,9 @@ function ComparisonBlock({ compare }: { compare: CompareResult }) {
         <div style={{ fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "var(--warning)", marginBottom: 8 }}>
           Vector-only pipeline
         </div>
-        <div style={{ fontSize: "0.85rem", color: "var(--ink)", lineHeight: 1.6, whiteSpace: "pre-wrap" }}>{compare.vectorOnly.answer}</div>
+        <div style={{ fontSize: "0.85rem", color: "var(--ink)", lineHeight: 1.6 }}>
+          <FormattedText text={compare.vectorOnly.answer} />
+        </div>
 
         {compare.vectorOnly.chunks.length > 0 && (
           <div style={{ marginTop: 10 }}>
@@ -959,7 +967,7 @@ function ArchitectureDiagram() {
       <div style={{ color: "var(--muted)" }}>↓</div>
       <div style={{ ...box, borderColor: "var(--accent)" }}>Retrieval router</div>
       <div style={{ color: "var(--muted)" }}>↓</div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(140px, 1fr))", gap: 12, width: "100%", maxWidth: 640 }}>
+      <div className="hybrid-rag-triad-grid" style={{ maxWidth: 640 }}>
         {sources.map((s) => (
           <div key={s} style={box}>{s}</div>
         ))}

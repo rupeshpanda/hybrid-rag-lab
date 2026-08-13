@@ -65,7 +65,7 @@ const ONTOLOGY_EDGES = [
 export default function HowItWorks() {
   return (
     <main style={{ background: "var(--bg)", color: "var(--ink)", minHeight: "100vh", paddingBottom: 60 }}>
-      <div style={{ borderBottom: "1px solid var(--border)", padding: "12px 24px", fontSize: "0.82rem", color: "var(--muted)", display: "flex", gap: 8, alignItems: "center" }}>
+      <div style={{ borderBottom: "1px solid var(--border)", padding: "12px 24px", fontSize: "0.82rem", color: "var(--muted)", display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap", rowGap: 4 }}>
         <a href="https://eleganceai.ai" style={{ color: "var(--muted)", textDecoration: "none" }}>Home</a>
         <span>/</span>
         <a href="https://eleganceai.ai/lab" style={{ color: "var(--muted)", textDecoration: "none" }}>Lab</a>
@@ -182,7 +182,7 @@ export default function HowItWorks() {
         </p>
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
           {ONTOLOGY_EDGES.map((e) => (
-            <div key={e.s + e.r} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: "0.88rem", fontFamily: "var(--font-mono, monospace)" }}>
+            <div key={e.s + e.r} style={{ display: "flex", alignItems: "center", gap: 10, rowGap: 6, flexWrap: "wrap", fontSize: "0.88rem", fontFamily: "var(--font-mono, monospace)" }}>
               <span style={{ border: "1px solid var(--border)", borderRadius: 8, padding: "5px 10px", background: "var(--card)" }}>{e.s}</span>
               <span style={{ color: "var(--accent)", fontWeight: 600 }}>{e.r}</span>
               <span style={{ border: "1px solid var(--border)", borderRadius: 8, padding: "5px 10px", background: "var(--card)" }}>{e.t}</span>
@@ -232,12 +232,12 @@ export default function HowItWorks() {
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
           <div style={{ border: "1px solid var(--accent)", borderRadius: 10, padding: "10px 18px", fontSize: "0.9rem", fontWeight: 600, color: "var(--accent)" }}>Enterprise AI Agent</div>
           <span style={{ color: "var(--muted)" }}>↓</span>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(140px, 1fr))", gap: 12, width: "100%", maxWidth: 620 }}>
+          <div className="hybrid-rag-triad-grid" style={{ maxWidth: 620 }}>
             {["SAP Data", "Vector RAG", "Knowledge Graph"].map((s) => (
               <div key={s} style={{ border: "1px solid var(--border)", borderRadius: 10, padding: "10px 8px", background: "var(--card)", fontSize: "0.85rem", textAlign: "center" }}>{s}</div>
             ))}
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(140px, 1fr))", gap: 12, width: "100%", maxWidth: 620 }}>
+          <div className="hybrid-rag-triad-grid" style={{ maxWidth: 620 }}>
             {["Transactions", "Policies", "Relationships"].map((s) => (
               <div key={s} style={{ fontSize: "0.78rem", color: "var(--muted)", textAlign: "center" }}>{s}</div>
             ))}

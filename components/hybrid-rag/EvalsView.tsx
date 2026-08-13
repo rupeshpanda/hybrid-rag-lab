@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { FormattedText } from "./FormattedText";
 
 type ScenarioSummary = { id: string; title: string; question: string };
 type EvalRunResult = { id: string; title: string; question: string; pass: boolean; detail: string; answer: string };
@@ -40,7 +41,7 @@ export default function EvalsView({ scenarios }: { scenarios: ScenarioSummary[] 
 
   return (
     <main style={{ background: "var(--bg)", color: "var(--ink)", minHeight: "100vh", paddingBottom: 60 }}>
-      <div style={{ borderBottom: "1px solid var(--border)", padding: "12px 24px", fontSize: "0.82rem", color: "var(--muted)", display: "flex", gap: 8, alignItems: "center" }}>
+      <div style={{ borderBottom: "1px solid var(--border)", padding: "12px 24px", fontSize: "0.82rem", color: "var(--muted)", display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap", rowGap: 4 }}>
         <a href="https://eleganceai.ai" style={{ color: "var(--muted)", textDecoration: "none" }}>Home</a>
         <span>/</span>
         <a href="https://eleganceai.ai/lab" style={{ color: "var(--muted)", textDecoration: "none" }}>Lab</a>
@@ -107,8 +108,8 @@ export default function EvalsView({ scenarios }: { scenarios: ScenarioSummary[] 
                     {r ? (
                       <>
                         <div style={{ fontSize: "0.85rem", color: "var(--muted)" }}><strong>Check:</strong> {r.detail}</div>
-                        <div style={{ fontSize: "0.85rem", color: "var(--ink)", whiteSpace: "pre-wrap", borderTop: "1px solid var(--border)", paddingTop: 10 }}>
-                          <strong>Agent answer:</strong> {r.answer}
+                        <div style={{ fontSize: "0.85rem", color: "var(--ink)", borderTop: "1px solid var(--border)", paddingTop: 10 }}>
+                          <strong>Agent answer:</strong> <FormattedText text={r.answer} />
                         </div>
                       </>
                     ) : (

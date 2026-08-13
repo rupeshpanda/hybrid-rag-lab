@@ -65,6 +65,7 @@ html {
 body {
   background: var(--bg);
   color: var(--ink);
+  overflow-x: hidden;
 }
 
 .section-label {
@@ -131,6 +132,14 @@ textarea:focus-visible {
   gap: 20px;
   align-items: start;
 }
+/* Grid items default to min-width: auto, which refuses to shrink below the
+   content's intrinsic width (e.g. the horizontally-scrolling chip row).
+   Without this, that width wins on narrow screens and the whole page's
+   layout viewport expands to fit it — the page renders zoomed out and tiny
+   on an actual phone instead of the single-column layout below applying. */
+.hybrid-rag-grid > * {
+  min-width: 0;
+}
 @media (max-width: 900px) {
   .hybrid-rag-grid {
     grid-template-columns: 1fr;
@@ -152,4 +161,17 @@ textarea:focus-visible {
 /* Hybrid RAG Lab — suggestion chip row scrolls horizontally, never wraps */
 .hybrid-rag-chip-row {
   scrollbar-width: thin;
+}
+
+/* Hybrid RAG Lab — 3-up diagram row (architecture / SAP mapping), stacks on small phones instead of squeezing */
+.hybrid-rag-triad-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+@media (max-width: 480px) {
+  .hybrid-rag-triad-grid {
+    grid-template-columns: 1fr;
+  }
 }
